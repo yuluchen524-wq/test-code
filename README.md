@@ -16,11 +16,15 @@
 │       ├── preprod.yaml
 │       └── prod.yaml
 ├── framework/
-│   └── config.py
+│   ├── config.py
+│   └── http/
+│       └── client.py
 ├── tests/
 │   ├── conftest.py
-│   └── smoke/
-│       └── test_env_config.py
+│   ├── smoke/
+│   │   └── test_env_config.py
+│   └── unit/
+│       └── test_api_client.py
 ├── pytest.ini
 └── requirements.txt
 ```
@@ -60,4 +64,19 @@ TEST_ENV=preprod pytest
 
 ```bash
 allure serve reports/allure-results
+```
+
+
+## 接口自动化基础能力
+
+当前已内置基础 `ApiClient`（`framework/http/client.py`），在 `tests/conftest.py` 中提供了会话级别 fixture：
+
+- `api_client`: 自动读取当前环境 `base_url` 与 `timeout`，用于统一发起 HTTP 请求。
+
+示例（在测试中直接使用）：
+
+```python
+def test_example(api_client):
+    resp = api_client.get("/ping")
+    assert resp.status_code == 200
 ```
