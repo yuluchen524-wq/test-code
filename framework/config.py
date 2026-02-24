@@ -3,8 +3,8 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
-ROOT_DIR = Path(__file__).resolve().parents[2]
-ENV_DIR = ROOT_DIR / "project" / "config" / "env"
+ROOT_DIR = Path(__file__).resolve().parents[1]
+ENV_DIR = ROOT_DIR / "config" / "env"
 SUPPORTED_ENVS = {"test", "preprod", "prod"}
 
 

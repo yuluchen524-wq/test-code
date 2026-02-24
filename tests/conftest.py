@@ -2,7 +2,8 @@ import os
 
 import pytest
 
-from project.framework.config import load_env_config
+from framework.config import load_env_config
+from framework.http import ApiClient
 
 
 def pytest_addoption(parser: pytest.Parser) -> None:
@@ -33,3 +34,13 @@ def env_config(env_name: str) -> dict:
 @pytest.fixture(scope="session")
 def base_url(env_config: dict) -> str:
     return env_config["base_url"]
+
+
+@pytest.fixture(scope="session")
+def api_client(env_config: dict) -> ApiClient:
+    client = ApiClient(
+        base_url=env_config["base_url"],
+        timeout=int(env_config.get("timeout", 10)),
+    )
+    yield client
+    client.close()
