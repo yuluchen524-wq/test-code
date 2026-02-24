@@ -2,7 +2,7 @@ import os
 
 import pytest
 
-from project.framework.config import load_env_config
+from framework.config import load_env_config
 
 
 def pytest_addoption(parser: pytest.Parser) -> None:
