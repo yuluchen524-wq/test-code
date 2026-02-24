@@ -10,18 +10,17 @@
 
 ```text
 .
-├── project/
-│   ├── config/
-│   │   └── env/
-│   │       ├── test.yaml
-│   │       ├── preprod.yaml
-│   │       └── prod.yaml
-│   ├── framework/
-│   │   └── config.py
-│   └── tests/
-│       ├── conftest.py
-│       └── smoke/
-│           └── test_env_config.py
+├── config/
+│   └── env/
+│       ├── test.yaml
+│       ├── preprod.yaml
+│       └── prod.yaml
+├── framework/
+│   └── config.py
+├── tests/
+│   ├── conftest.py
+│   └── smoke/
+│       └── test_env_config.py
 ├── pytest.ini
 └── requirements.txt
 ```
